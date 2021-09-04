@@ -13,6 +13,8 @@
 </head>
 <body>
     <header>
+ 
+
         <table>
         <th> <a href="booking">객실관리</a></th>
         <th style="background-color: chartreuse;" id="rese">예약관리</th>
@@ -45,7 +47,7 @@
     <input type= button value="등록" id=btnadd>
     <input type= button value="취소" id=btnEmpty>
     <input type= button value="삭제" id=btnDelete>
-     
+
 </body>
 <script src="https://code.jquery.com/jquery-3.5.0.js"> </script>
 <script>
@@ -122,4 +124,7 @@ $(document)
 	}
 })
 </script>
+
+<style>
+</style>
 </html>
