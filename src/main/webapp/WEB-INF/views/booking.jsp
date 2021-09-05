@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>객실관리</title>
     <a href="room"></a>
 </head>
 
@@ -54,9 +54,9 @@
  			<div class=item>
  			객실관리<input type="text"><br>
                 숙박기간<input type="date"><br>
-                숙박인원<input type="number">명<br>
-                1박비용<input type="number">원<br>
-                총 숙박비<input type="number">원<br>
+                숙박인원<input type="number"><br>
+                1박비용<input type="number"><br>
+                총 숙박비<input type="number"><br>
                 예약자 모바일<input style="margin-bottom: 10%;" type="number"><br>
  			<input type="button" value="예약완료" class="btn">
  			<input type="button" value="리셋" class="btn">
@@ -64,7 +64,7 @@
  			</div>
  			<div class=item>
  			<p>예약된 객실</p>
-            <table style="border: 2px solid;">
+            <table style="border: 1px solid;">
                 <tbody>
                     <tr><td>광덕산</td></tr>
                     <tr><td>태조산</td></tr>

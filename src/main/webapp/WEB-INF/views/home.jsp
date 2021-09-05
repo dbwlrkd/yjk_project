@@ -15,7 +15,7 @@
 <!--<img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
 <img src="./resources/img/banner.jpg" width="600" height="150">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <form method="post" action="/app/check_user" class="form-signin">
+    <form method="post" action="/app/check_user" class="form-signin" id=frmLogin>
 			USERID&nbsp;&nbsp;<input type=text name=userid class="log" placeholder="유저아이디를 입력해주세요" required autofocus"><br>
 			USERPW&nbsp;<input type=password name=passcode class="log" placeholder="비밀번호"><br><br>
 			<input type="submit" class="btn" value="로그인">&nbsp;
@@ -25,6 +25,25 @@
 	</form>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
       </div>
+      <script src='https:code.jquery.com/jQuery-3.5.0.js'></script>
+<script>
+$(document)
+.on('submit','#frmLogin',function(){
+	let pstr = $.trim($('input[name=userid]').val());
+	$('input[name=userid]').val(pstr);
+	pstr=$.trim($('input[name=passcode]').val());
+	$('input[name=passcode]').val(pstr);
+	if($('input[name=userid]').val()==''){
+		alert('로긴아이디를 입력하세요');
+		return false;
+	}
+	if($('input[name=passcode]').val()==''){
+		alert('비밀번호를 입력하세요');
+		return false;
+	}
+	return true;
+})
+</script>
     <style>
 .main {
 	text-align: center;

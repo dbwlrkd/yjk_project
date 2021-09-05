@@ -7,10 +7,11 @@
 <title>회원가입</title>
 </head>
 <body class="new">
-<form method="get" action="/app/home" class="form">
+<form method="post" action="/app/signin" class="form"  id="frmSignin">
+		이름입력 <input type=text name=realname class="dow"><br>
 		ID입력&nbsp;&nbsp;&nbsp; <input type=text name=userid class="dow"><br>
-		비밀번호 <input type="password" name=passcode class="dow"><br>
-		이름입력 <input type=text name=name class="dow"><br>
+		비밀번호 <input type="password" name=passcode1 class="dow"><br>
+		비번확인 <input type="password" name=passcode2 class="dow"><br>
 		휴대번호 <input type text name=mobile class="dow"><br>
 		<input type="submit" value="전송" class="btn">&nbsp;
 				<a href='/app/'>취소</a>&nbsp;
@@ -20,6 +21,29 @@
        <div id="bg">
     <img src="./resources/img/flower.png" alt="">
 </div>
+<script src="https:code.jquery.com/jQuery-3.5.0.js"></script>
+   <script>
+$(document)
+.on("submit","#frmSignin",function(){
+   if($('input[name=realname]').val()==''){
+      alert("이름을 입력하시오.");
+      return false;
+   }
+   if($('input[name=userid]').val()==''){
+      alert('로긴아이디를 입력하시오');
+      return false;
+   }
+   if($('input[name=passcode1]').val()==''){
+      alert("비밀번호를 입력하시오");
+      return false;
+   }
+   if($("input[name=passcode1]").val()!=$('input[name=passcode2]').val()){
+      alert("비밀번호가 일치하지 않습니다.");
+      return false;
+   }
+   return true;
+})
+</script>
 <style>
 #bg {
 z-index: -11;
@@ -101,6 +125,5 @@ margin-top: 30px;
 margin-left: 50px;
 }
 </style>
-
 </body>
 </html>

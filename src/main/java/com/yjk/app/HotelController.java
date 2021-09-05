@@ -34,15 +34,20 @@ public class HotelController {
 	}
 	@RequestMapping(value= "/check_user",method=RequestMethod.POST)
 	public String check_user(HttpServletRequest hsr,Model model) {
+		System.out.println(hsr.getParameter("userid"));
+		System.out.println(hsr.getParameter("passcode"));
 		String userid=hsr.getParameter("userid");
 		String passcode=hsr.getParameter("passcode");
-		
-		System.out.println("userid:"+userid+",passcode"+passcode);
-		
-			HttpSession session=hsr.getSession(); //세션을 사용하게 만든다
+		//DB에서 유저확인 : 기존우저면 booking, 없으면 home 으로
+		iMember member=sqlSession.getMapper(iMember.class);
+		int n=member.doCheckUser(userid,passcode);
+		if(n>0) {
+			HttpSession session=hsr.getSession();
 			session.setAttribute("loginid", userid);
-			
 		return "redirect:/booking"; //RequestMapping의 경로 이름
+	} else {
+		return "home"; 
+		}
 	}
 	@RequestMapping(value= "/booking",method=RequestMethod.GET)
 		public String doOK(HttpServletRequest hsr,Model model) {
@@ -79,6 +84,20 @@ public class HotelController {
 	session.invalidate();
 	return "redirect:/home";
 	}
+	 @RequestMapping(value="/signin",method=RequestMethod.POST,
+	         produces="application/text; charset=utf8")
+	   public String doSignin(HttpServletRequest hsr) {
+	   System.out.println(hsr.getParameter("realname"));
+	   System.out.println(hsr.getParameter("userid"));
+	   System.out.println(hsr.getParameter("passcode"));
+	   
+	      String realname=hsr.getParameter("realname");
+	      String userid=hsr.getParameter("userid");
+	      String passcode=hsr.getParameter("passcode1");
+	      iMember member=sqlSession.getMapper(iMember.class);
+	      member.doSignin(realname,userid,passcode);
+	      return "home";
+	   }
 	@RequestMapping(value="/getRoomList",method=RequestMethod.POST,
 					produces = "application/text; charset=utf8")
 	@ResponseBody
